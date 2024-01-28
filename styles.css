@@ -1,0 +1,181 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.container{
+    width: 1200px;
+    height: 900px;
+    margin: 0 auto;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    top: 50px;
+}
+
+.banner{
+    height: 130px;
+    overflow: hidden;
+}
+
+.logo{
+    object-position: 0px -15px;
+    width: 100%;
+}
+
+.flex{
+    display: flex;
+}
+
+.container2{
+    padding: 60px;
+}
+.section__text{
+    width: 50%;
+    color: red;
+}
+
+.sectionTitle{
+    font-size:2.5rem;
+    font-weight: 700;
+    padding: 10px 0;
+}
+
+.sectionText{
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 700;
+}
+
+.dni__container{
+    padding: 80px 0 20px 0;
+    transform: rotate(-5deg);
+}
+.dni{
+    box-shadow: 5px 2.5px rgba(128, 128, 128, 0.233);
+    border-radius: 20px;
+    
+    background-color: aquamarine;
+    
+}
+
+.mensajeAlerta{
+    color: red;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding-left: 60px;
+}
+
+.section__input{
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+.input__container{
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 15px 0;
+    line-height: 20px;
+    margin: 85px 0 130px 0;
+    width: 100%;
+    background: transparent;
+    font-size: 1.5rem;
+
+}
+
+.input__container:focus, .input__container:hover{
+    border: none; 
+    background: transparent;
+}
+
+
+button{
+    display: block;
+}
+
+.btn{
+    width: 450px;
+    text-align: left;
+    border-radius: 15px;
+    border: 5px solid white;
+    overflow: hidden;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 15px 0;
+
+}
+.btn i {
+    background-color: green;
+    color: white;
+    padding: 40px;
+    margin-right:  20px;
+    font-size: 35px;
+}
+
+.corregir i {
+    background-color: red;
+}
+
+.clave{
+    background-image: url('./img/clave-fondo.png');
+    padding: 60px 0;
+}
+
+.clave  .container2{
+    background-color: rgba(128, 128, 128, 0.027);
+}
+
+.extraTitle{
+    display: block;
+    font-size: 1.5rem;
+    padding: 5px 0;
+}
+
+.sectionTitle2{
+    color: white;
+    padding: 15px 0;
+}
+
+.sectionText2{
+    color: orange;
+    margin-bottom: 75px;
+}
+
+.clave__container{
+    width: 100%;
+}
+
+.clave__img{
+    object-position: -50px 0px;
+}
+
+.center{
+    text-align: center;
+}
+
+.saldo{
+    margin: 80px 0;
+    font-size: 3rem;
+    font-weight: 700;
+    background: white;
+    line-height: 4.5rem;
+}
+.saldo span{
+    font-weight: 400;
+    
+}
+
+.flex-around{
+    justify-content: space-around;
+}
