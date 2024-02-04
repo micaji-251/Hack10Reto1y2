@@ -1,11 +1,12 @@
 // PROGRAMACION BANCO
 // CUENTAS
 let cuentas = [ 
-    {nombre: "Mali", soles: 200, password: '1234', dni: 44788834, dolares:100  }, 
+    {nombre: "Mali", soles: 200, password: '1234', dni: 44788834, dolares:100}, 
     {nombre: "Gera", soles: 150, password: '5678', dni: 10247439, dolares:150}, 
     {nombre: "Sabi", soles: 60, password: '9102', dni: 98005362, dolares:200} 
 ]; 
 
+// DEFINIENDO VARIABLES
 let saldoActual = 0;
 let passwordActual = '';
 let paso = '';
@@ -14,14 +15,13 @@ let saldoActualSoles = 0;
 let saldoActualDolares = 0;
 let moneda = '';
 
-// VALIDACION DEL DNI
 const inputDni = document.getElementById('inputDni');
 const btnConformeDni = document.getElementById('btnConformeDni');
 const btnConrregirDni = document.getElementById('btnConrregirDni')
 const pantallaDni = document.querySelector('.introduccion');
 const pantallaMenu = document.querySelector('.menu');
 const pantallaClave = document.getElementById('clave2');
-let passwordInput = document.getElementById('passwordInput');
+const passwordInput = document.getElementById('passwordInput');
 const pantallaConsulta = document.querySelector('.consulta');
 const pantallaRetiroMoneda = document.querySelector('.retiro1');
 const pantallaRetiro = document.getElementById('montoARetirar');
@@ -36,16 +36,20 @@ const pantallaResultadoDeposito = document.querySelector('.resultadoDeposito');
 const textoSaldoDepositar = document.querySelector('.textoSaldoDepositar');
 const textoResultadoDepositar = document.querySelector('.textoResultadoDepositar');
 
-btnConformeDni.addEventListener('click', ()=>{
-    DniIngresado = Number(inputDni.value);
-    validarDni(DniIngresado);
-}
-);
+dniClicks();
 
-btnConrregirDni.addEventListener('click', ()=>{
-    btnConcluir();
+function dniClicks(){
+    btnConformeDni.addEventListener('click', ()=>{
+        DniIngresado = Number(inputDni.value);
+        validarDni(DniIngresado);
+    }
+    );
+
+    btnConrregirDni.addEventListener('click', ()=>{
+        btnConcluir();
+    }
+    );
 }
-);
 
 function showScreen(a){
     a.classList.remove('none');
@@ -57,11 +61,10 @@ function hideScreen(a){
 
 
 function validarDni(){
-    // console.log(DniIngresado);
     usuario = cuentas.findIndex(({dni}) => dni === DniIngresado);
 
     if (usuario === -1){
-        alert('Dni ingresado no es cliente del Banco Multired')
+        alert('Dni ingresado no es cliente del Banco Multired');
 
     }else{
         hideScreen(pantallaDni);
@@ -74,102 +77,63 @@ function validarDni(){
 
 }
 
-function Menu(){
-        pantallaMenu.addEventListener('click', function escucharMenu(e){
-            console.log('Menu');
+function menuOptions(a){
+    
+    paso = a;
+    validarContraseña();
+    return;
+}
 
-            if(e.target.classList.contains('btnMenuSaldo')){
-                console.log('Quiere ir al menu de saldo');
-                paso = 'Saldo';
-                validarContraseña();
-                return;
+function Menu(){
+
+        pantallaMenu.addEventListener('click', function escucharMenu(e){
+
+            if(e.target.classList.contains('btnMenuSaldo')){          
+                menuOptions('Saldo');
+                pantallaMenu.removeEventListener('click', escucharMenu);
             }
+
             if(e.target.classList.contains('btnMenuRetiro')){
-                console.log('Quiere ir al menu de Retiro');
-                paso = 'Retiro';
-                validarContraseña();
-                return;
+                menuOptions('Retiro');
+                pantallaMenu.removeEventListener('click', escucharMenu);
             }
             if(e.target.classList.contains('btnMenuDeposito')){
-                console.log('Quiere ir al menu de Deposito');
-                paso = 'Deposito';
-                validarContraseña();
-                return;
+                menuOptions('Deposito');
+                pantallaMenu.removeEventListener('click', escucharMenu);
             }
-
-            pantallaMenu.removeEventListener('click', escucharMenu);
+            
         })
+
+        
 }
 
 function validarContraseña(e){
 
     hideScreen(pantallaMenu);
     showScreen(pantallaClave);
-    e=document.createEvent;
-    console.log(e.target);
-
-    // pantallaClave.addEventListener('click', listenerContraseña,false);
 
     pantallaClave.addEventListener('click', function listenerContraseña(e){
-        console.log(e.target);
         if(e.target.classList.contains('contraseña') && passwordInput.value === passwordActual){
 
-            console.log('Contiene contraseña');
-            // this.preventDefault;
             pantallaClave.removeEventListener('click',listenerContraseña);
-            validarContraseña2()
-            
-            
+
+            validarContraseñaSwitch();  
         } 
     });
     
-}
-
-// function listenerContraseña(){
-//     console.log(this.target);
-//     if(this.target.classList.contains('contraseña') && passwordInput.value === passwordActual){
-
-//         console.log('Contiene contraseña');
-//         // this.preventDefault;
-//         validarContraseña2();
-
-//         // if(passwordInput.value === ''){
-//         //     // alert('Falta Ingresar la contraseña');
-            
-//         // } else if(passwordInput.value === passwordActual){
-
-//         //     console.log('Contraseña correcta');
-//         //     validarContraseña2();
-            
-//         // } else {
-//         //     alert('Contraseña incorrecta, ingresar nuevamente ...');
-//         // }
-
-//     } else {
-//         console.log('No contiene contraseña');
-//     }
-
-
-//     // if(event.target.classList.contains('concluir')){
-//     //     btnConcluir();
-//     // }
-
-        
-// };
+};
 
 function borrarContraseña(){
-    console.log(passwordInput.value);
     passwordInput.value='';
-    console.log(passwordInput.value);
+
 }
 
-function validarContraseña2(){
+function validarContraseñaSwitch(){
     switch(paso){
         case 'Saldo':
             
             hideScreen(pantallaClave);
             showScreen(pantallaConsulta);
-            console.log('Eligio Saldo');
             consultarSaldo();
             borrarContraseña();
             break;
@@ -177,7 +141,6 @@ function validarContraseña2(){
         case 'Retiro':
             hideScreen(pantallaClave);
             showScreen(pantallaRetiroMoneda);
-            console.log('Eligio Retiro');
             guardarMonedaRetiro();
             borrarContraseña();
             break;
@@ -185,7 +148,6 @@ function validarContraseña2(){
         case 'Deposito':
             hideScreen(pantallaClave);
             showScreen(pantallaDepositoMoneda);
-            console.log('Eligio Deposito');
             borrarContraseña();
             guardarMonedaDeposito();
             break;
@@ -199,37 +161,37 @@ function consultarSaldo(){
     saldoTextoDolares.innerHTML = saldoActualDolares + '<span> dolares</span>';
 
     btnOptions(pantallaConsulta);
-    return
 }
 
 function btnConcluir(){
     location.reload(true);
 }
 
+
 function guardarMonedaRetiro(){
     pantallaRetiroMoneda.addEventListener('click', function guardarMonedas(event){
         
 
         if(event.target.classList.contains('soles')){
-            console.log('Eligio soles');
             moneda = 'soles';
+            pantallaRetiroMoneda.removeEventListener('click',guardarMonedas);
             showScreen(pantallaRetiro);
             hideScreen(pantallaRetiroMoneda);
             guardarMontoRetirar();
         }
 
         if(event.target.classList.contains('dolares')){
-            console.log('Eligio dolares');
             moneda = 'dolares';
+            pantallaRetiroMoneda.removeEventListener('click',guardarMonedas);
             showScreen(pantallaRetiro);
             hideScreen(pantallaRetiroMoneda);
-            guardarMontoRetirar();}
+            guardarMontoRetirar();
+        }
 
-        pantallaRetiroMoneda.removeEventListener('click',guardarMonedas)
-    })
-
-    
+        
+    })   
 }
+
 
 function guardarMontoRetirar(){
         pantallaRetiro.addEventListener('click', function MontoGuardado(e){
@@ -237,7 +199,6 @@ function guardarMontoRetirar(){
                 montoRetirado = Number(e.target.textContent);
                 hideScreen(pantallaRetiro);
                 showScreen(pantallaResultadoRetiro);
-                actualizarSaldo();
                 resultadoRetirar();
             }
 
@@ -246,39 +207,51 @@ function guardarMontoRetirar(){
 }
 
 function resultadoRetirar(){
-    console.log(montoRetirado);
-    console.log(saldoActualDolares);
-    console.log(saldoActualSoles);
 
     textoResultadoRetirar.innerHTML=montoRetirado + '<span> ' + moneda+ '</span>';
-
+    actualizarSaldoRestar();
     imprimirSaldo(textoSaldoRetirar);
     btnOptions(pantallaResultadoRetiro);  
 }
 
 function btnOptions(screen){
 
-    screen.addEventListener('click', (e)=>{
+    screen.addEventListener('click', function btnOptionsFunction(e){
         if(e.target.classList.contains('concluir')){
             btnConcluir();
+            screen.removeEventListener('click',btnOptionsFunction);
         }
         if(e.target.classList.contains('regresar')){
+            screen.removeEventListener('click',btnOptionsFunction);
             hideScreen(screen);
             showScreen(pantallaMenu);
+            Menu();
         }
     })
 
+
+
 }
 
-function actualizarSaldo(){
+function restarSaldo(a, b){
+    return a-b
+}
+
+
+function sumarSaldo(a, b){
+    return a + b
+}
+
+function actualizarSaldoRestar(){
 
     switch(moneda){
         case 'soles':
-            saldoActualSoles = saldoActualSoles - montoRetirado;
+            saldoActualSoles = restarSaldo(saldoActualSoles, montoRetirado);
             cuentas[usuario].soles = saldoActualSoles;
             break;
+
         case 'dolares':
-            saldoActualDolares = saldoActualDolares - montoRetirado;
+            saldoActualSoles = restarSaldo(saldoActualDolares, montoRetirado);
             cuentas[usuario].dolares = saldoActualDolares;
             break;
             
@@ -288,25 +261,22 @@ function actualizarSaldo(){
 function guardarMonedaDeposito(){
   
     pantallaDepositoMoneda.addEventListener('click', function GuardarMonedaDeposito2(e){
-        console.log(e.target);
         if(e.target.classList.contains('soles')){
             moneda = 'soles';
             showScreen(pantallaDeposito);
             hideScreen(pantallaDepositoMoneda);
+            pantallaDepositoMoneda.removeEventListener('click', GuardarMonedaDeposito2);
             guardarMontoDeposito();
 
         }
     
         if(e.target.classList.contains('dolares')){
-            
-            console.log('Eligio dolares');
             moneda = 'dolares';
             showScreen(pantallaDeposito);
             hideScreen(pantallaDepositoMoneda);
+            pantallaDepositoMoneda.removeEventListener('click', GuardarMonedaDeposito2);
             guardarMontoDeposito();
         }
-
-        pantallaDepositoMoneda.removeEventListener('click', GuardarMonedaDeposito2);
     })
 }
 
@@ -316,7 +286,7 @@ function guardarMontoDeposito(){
             montoRetirado = Number(e.target.textContent);
             hideScreen(pantallaDeposito);
             showScreen(pantallaResultadoDeposito);
-            actualizarSaldo2();
+            actualizarSaldoSuma();
             resultadoDepositar();
         }
 
@@ -325,9 +295,6 @@ function guardarMontoDeposito(){
 }
 
 function resultadoDepositar(){
-    console.log(montoRetirado);
-    console.log(saldoActualDolares);
-    console.log(saldoActualSoles);
 
     textoResultadoDepositar.innerHTML=montoRetirado + '<span> ' + moneda+ '</span>';
 
@@ -339,25 +306,23 @@ function imprimirSaldo(a){
     switch(moneda){
         case 'soles':
             a.innerHTML = saldoActualSoles + '<span> ' + moneda+ '</span>';
-            console.log('doy el monto depositado');
             break;
 
         case 'dolares':
             a.innerHTML = saldoActualDolares + '<span> ' + moneda+ '</span>';
-            console.log('doy el monto depositado');
             break;
     }
 }
 
-function actualizarSaldo2(){
+function actualizarSaldoSuma(){
 
     switch(moneda){
         case 'soles':
-            saldoActualSoles = saldoActualSoles + montoRetirado;
+            saldoActualSoles = sumarSaldo(saldoActualSoles,montoRetirado);
             cuentas[usuario].soles = saldoActualSoles;
             break;
         case 'dolares':
-            saldoActualDolares = saldoActualDolares + montoRetirado;
+            saldoActualSoles = sumarSaldo(saldoActualDolares,montoRetirado);
             cuentas[usuario].dolares = saldoActualDolares;
             break;
             
