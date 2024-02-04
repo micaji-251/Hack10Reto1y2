@@ -24,6 +24,10 @@
 .container2{
     padding: 60px;
 }
+
+.container3{
+    padding: 0 60px;
+}
 .section__text{
     width: 50%;
     color: red;
@@ -102,8 +106,10 @@ button{
     padding: 40px;
     margin-right:  20px;
     font-size: 35px;
+    pointer-events: none;
 }
 
 .corregir i {
     background-color: red;
+    
 }

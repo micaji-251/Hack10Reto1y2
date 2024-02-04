@@ -13,6 +13,10 @@ body {
   display: flex;
 }
 
+.none {
+  display: none;
+}
+
 .clave {
   background-image: url("./img/clave-fondo.png");
   padding: 60px 0;
@@ -51,8 +55,13 @@ body {
   text-align: center;
 }
 
+.btn.btn--delgado i {
+  padding: 20px;
+  font-size: 30px;
+}
+
 .saldo {
-  margin: 80px 0;
+  margin: 50px 0;
   font-size: 3rem;
   font-weight: 700;
   background: white;
@@ -92,6 +101,10 @@ body {
 
 .container2 {
   padding: 60px;
+}
+
+.container3 {
+  padding: 0 60px;
 }
 
 .section__text {
@@ -168,6 +181,7 @@ button {
   padding: 40px;
   margin-right: 20px;
   font-size: 35px;
+  pointer-events: none;
 }
 
 .corregir i {
@@ -177,4 +191,12 @@ button {
 .input__container:focus, .input__container:hover {
   border: none;
   background: transparent;
+}
+
+.conforme i:hover {
+  background-color: rgba(4, 99, 4, 0.733);
+}
+
+.corregir i:hover {
+  background-color: rgba(236, 9, 9, 0.829);
 }/*# sourceMappingURL=styles.css.map */

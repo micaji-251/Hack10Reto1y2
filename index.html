@@ -31,14 +31,14 @@
             <div class="section__input">
 
                 <form action="#">
-                    <input type="number" class="input__container">
+                    <input type="number" class="input__container" id="inputDni">
                 </form>
 
-                <button class=" btn conforme">
+                <button class=" btn conforme" id="btnConformeDni">
                     <i class="fa-solid fa-check"></i>CONFORME
                 </button>
-                <button class=" btn corregir">
-                    <i class="fa-solid fa-x"></i> CORREGIR
+                <button class=" btn corregir concluir" id="btnConrregirDni">
+                    <i class="fa-solid fa-x concluir"></i> ACABAR TRANSACCION
                 </button>
             </div>
         
@@ -49,7 +49,7 @@
 
 
     </section>
-    <section class="container clave">
+    <section class="container clave none" id="clave">
 
         <div class="flex container2">
             <div class="section__text">
@@ -64,8 +64,10 @@
                 <p class="sectionText sectionText2">No permita que otras personas vean su clave</p>
 
                 <form action="#">
-                    <input type="password" class="input__container">
+                    <input type="password" class="input__container" id="passwordInput">
                 </form>
+
+                
 
             </div>
 
@@ -73,14 +75,27 @@
                 <div class="clave__container">
                     <img src="./img/clave-2.png" alt="Poner la clave en el keypad" class="clave__img">
                 </div>
+
+                <div class="container2">
+                    <button class=" btn conforme btn--delgado contraseña">
+                        <i class="fa-solid fa-check"></i>CONFORME
+                    </button>
+                    <button class=" btn corregir btn--delgado concluir">
+                        <i class="fa-solid fa-rotate-left"></i> REGRESAR
+                    </button>
+                </div>
+                
                 
             </div>
+
+            
         
         </div>
 
+        
 
     </section>
-    <section class="container menu">
+    <section class="container menu none">
         <div class="banner">
             <img src="./img/multired-banner.jpg" alt=" Multired banner" class="logo">
         </div>
@@ -95,19 +110,19 @@
         <div class="flex container2">
             <div class="section__text">
 
-                <button class=" btn corregir">
-                    <i class="fa-regular fa-file"></i> CONSULTAR SALDO
+                <button class=" btn corregir btnMenuSaldo">
+                    <i class="fa-regular fa-file btnMenuSaldo"></i> CONSULTAR SALDO
                 </button>   
 
             </div>
 
             <div class="section__input">
 
-                <button class=" btn corregir">
-                    <i class="fa-solid fa-sack-dollar"></i> RETIRAR DINERO
+                <button class=" btn corregir btnMenuRetiro">
+                    <i class="fa-solid fa-sack-dollar btnMenuRetiro"></i> RETIRAR DINERO
                 </button>
-                <button class=" btn corregir">
-                    <i class="fa-solid fa-money-bill"></i> INGRESAR DINERO
+                <button class=" btn corregir btnMenuDeposito">
+                    <i class="fa-solid fa-money-bill btnMenuDeposito"></i> INGRESAR DINERO
                 </button>
             </div>
         
@@ -118,7 +133,7 @@
 
     </section>
 
-    <section class="container consulta">
+    <section class="container consulta none">
 
         <div class="banner">
             <img src="./img/multired-banner.jpg" alt=" Multired banner" class="logo">
@@ -129,15 +144,16 @@
             </h1>
             <p class="sectionText">El saldo disponible en esta cuenta bancaria es de :</p>
 
-            <p class="saldo">3500 <span> soles</span></p>
+            <p class="saldo saldoSoles">3500 <span> soles</span></p>
+            <p class="saldo saldoDolares">3500 <span> dolares</span></p>
         </div>
 
-        <div class="flex container2 flex-around">
-            <button class=" btn conforme">
-                <i class="fa-solid fa-check"></i>CONCLUIR
+        <div class="flex container3 flex-around">
+            <button class=" btn conforme concluir" >
+                <i class="fa-solid fa-check concluir"></i>CONCLUIR
             </button>
-            <button class=" btn corregir">
-                <i class="fa-solid fa-rotate-left"></i> REGRESAR
+            <button class=" btn corregir regresar">
+                <i class="fa-solid fa-rotate-left regresar"></i> REGRESAR
             </button>
         </div>
         
@@ -146,7 +162,7 @@
 
     </section>
 
-    <section class="container retiro retiro1">
+    <section class="container retiro retiro1 none">
 
         <div class="banner">
             <img src="./img/multired-banner.jpg" alt=" Multired banner" class="logo">
@@ -161,17 +177,13 @@
 
         <div class="flex container2">
             <div class="section__text">
-
-                <button class=" btn corregir">
+                <button class=" btn corregir soles">
                     <i class="fa-solid fa-sack-dollar"></i> SOLES
                 </button>
-
-
             </div>
 
             <div class="section__input">
-
-                <button class=" btn corregir">
+                <button class=" btn corregir dolares">
                     <i class="fa-solid fa-sack-dollar"></i> DOLARES
                 </button>
 
@@ -182,7 +194,7 @@
 
     </section>
 
-    <section class="container retiro">
+    <section class="container retiro none" id="montoARetirar">
 
         <div class="banner">
             <img src="./img/multired-banner.jpg" alt=" Multired banner" class="logo">
@@ -198,10 +210,10 @@
         <div class="flex container2">
             <div class="section__text">
 
-                <button class=" btn corregir">
+                <button class=" btn corregir monto">
                     <i class="fa-solid fa-sack-dollar"></i> 20
                 </button>
-                <button class=" btn corregir">
+                <button class=" btn corregir monto">
                     <i class="fa-solid fa-sack-dollar"></i> 50
                 </button>  
 
@@ -209,10 +221,10 @@
 
             <div class="section__input">
 
-                <button class=" btn corregir">
+                <button class=" btn corregir monto">
                     <i class="fa-solid fa-sack-dollar"></i> 100
                 </button>
-                <button class=" btn corregir">
+                <button class=" btn corregir monto">
                     <i class="fa-solid fa-sack-dollar"></i> 200
                 </button>
             </div>
@@ -223,7 +235,7 @@
 
     </section>
 
-    <section class="container pago pago1">
+    <section class="container pago pago1 none">
 
         <div class="banner">
             <img src="./img/multired-banner.jpg" alt=" Multired banner" class="logo">
@@ -250,6 +262,7 @@
                 <button class=" btn corregir">
                     <i class="fa-solid fa-money-bill"></i> DOLARES
                 </button>
+                
 
             </div>
         
@@ -257,7 +270,7 @@
 
     </section>
 
-    <section class="container pago">
+    <section class="container pago none">
 
         <div class="banner">
             <img src="./img/multired-banner.jpg" alt=" Multired banner" class="logo">
@@ -299,7 +312,7 @@
 
     </section>
 
-    <section class="container resultadoRetiro">
+    <section class="container resultadoRetiro none">
 
         <div class="banner">
             <img src="./img/multired-banner.jpg" alt=" Multired banner" class="logo">
@@ -308,17 +321,21 @@
             <h1 class="sectionTitle">
                 SE HA RETIRADO DINERO
             </h1>
+            <p class="sectionText">El monto retirado es de :</p>
+
+            <p class="saldo textoResultadoRetirar">100 <span> soles</span></p>
+
             <p class="sectionText">El saldo disponible en esta cuenta bancaria es de :</p>
 
-            <p class="saldo">3500 <span> soles</span></p>
+            <p class="saldo textoSaldoRetirar">3500 <span> soles</span></p>
 
         </div>
 
-        <div class="flex container2 flex-around">
-            <button class=" btn conforme">
+        <div class="flex container3 flex-around">
+            <button class=" btn conforme concluir">
                 <i class="fa-solid fa-check"></i>CONCLUIR
             </button>
-            <button class=" btn corregir">
+            <button class=" btn corregir regresar">
                 <i class="fa-solid fa-rotate-left"></i> REGRESAR
             </button>
         </div>
@@ -326,7 +343,7 @@
 
     </section>
 
-    <section class="container resultadoRetiro">
+    <section class="container resultadoDeposito none">
 
         <div class="banner">
             <img src="./img/multired-banner.jpg" alt=" Multired banner" class="logo">
@@ -335,13 +352,14 @@
             <h1 class="sectionTitle">
                 SE HA DEPOSITADO DINERO
             </h1>
+            <p class="sectionText">El monto depositado es:</p>
+            |<p class="saldo textoResultadoDepositar">100 <span> soles</span></p>
             <p class="sectionText">El saldo disponible en esta cuenta bancaria es de :</p>
-
-            <p class="saldo">3500 <span> soles</span></p>
+            <p class="saldo textoSaldoDepositar">3500 <span> soles</span></p>
 
         </div>
 
-        <div class="flex container2 flex-around">
+        <div class="flex container3 flex-around">
             <button class=" btn conforme">
                 <i class="fa-solid fa-check"></i>CONCLUIR
             </button>
@@ -352,7 +370,6 @@
         
 
     </section>
-
-    <script src="./app.js"></script>
+    <script src="./reto2.js"></script>
 </body>
 </html>

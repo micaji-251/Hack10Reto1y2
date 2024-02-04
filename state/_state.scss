@@ -1,6 +1,13 @@
 
-
 .input__container:focus, .input__container:hover{
     border: none; 
     background: transparent;
+}
+
+.conforme i:hover{
+    background-color: rgba(4, 99, 4, 0.733)
+}
+
+.corregir i:hover{
+    background-color: rgba(236, 9, 9, 0.829);
 }
