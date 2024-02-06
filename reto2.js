@@ -167,7 +167,6 @@ function btnConcluir(){
     location.reload(true);
 }
 
-
 function guardarMonedaRetiro(){
     pantallaRetiroMoneda.addEventListener('click', function guardarMonedas(event){
         
@@ -197,9 +196,39 @@ function guardarMontoRetirar(){
         pantallaRetiro.addEventListener('click', function MontoGuardado(e){
             if(e.target.classList.contains('monto')){
                 montoRetirado = Number(e.target.textContent);
-                hideScreen(pantallaRetiro);
-                showScreen(pantallaResultadoRetiro);
-                resultadoRetirar();
+                switch(moneda){
+                    case 'soles':
+                        if (saldoActualSoles - montoRetirado<0){
+                            alert('No puede retirar más dinero del que tiene en la cuenta de soles');
+                            btnConcluir();
+                            break;
+                        }
+                        
+                        else{
+                            hideScreen(pantallaRetiro);
+                            showScreen(pantallaResultadoRetiro);
+                            resultadoRetirar();
+                            break;
+                        }
+                        
+            
+                    case 'dolares':
+                        if (saldoActualDolares - montoRetirado<0){
+                            alert('No puede retirar más dinero del que tiene en la cuenta de soles');
+                            btnConcluir();
+                            break;
+                        }
+                        
+                        else{
+                            hideScreen(pantallaRetiro);
+                            showScreen(pantallaResultadoRetiro);
+                            resultadoRetirar();
+                            break;
+                        }
+                }
+
+
+                
             }
 
             pantallaRetiro.removeEventListener('click', MontoGuardado);
